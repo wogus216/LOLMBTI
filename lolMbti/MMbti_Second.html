@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>첫번째</title>
+<style type="text/css">
+body{
+	text-align: center;
+	background-color: #262626;
+	
+}
+
+.article{
+	display: flex;
+	flex-direction: column;
+
+}
+
+ .question{
+	width: 100%;
+	min-width: 1500px;
+	margin-bottom: 50px;
+} 
+
+.result{
+	display: none;
+}
+
+.result_img{
+	border-radius: 20px;
+	width: 500px;
+	height: 300px;
+	margin: 0 auto;
+}
+h1{
+	margin-top: 5px;
+}
+
+.srt{
+	background-color: #01a1dd;
+	
+}
+
+.progress-container{
+	height: 30px;
+	margin: 0 500px;
+	border-radius: 15px;
+}
+
+.progressbar{
+	height: 100%;
+	background-color: red;
+	border-radius: 15px;
+}
+
+.qs_btn{
+	width:130vw;
+	height: 40vw;
+	margin-bottom: 80px;
+	font-size: 100px;
+	border-radius: 15px;
+	border-width: 20px 0;
+    background: none;
+    border-style: solid;
+    color: white;
+    border-color: antiquewhite;
+}
+
+/* 질문 */
+.qs_area{
+	margin: 0 auto;
+	width: 150vw;
+	height: 100%;
+}
+.qs_txt{
+	margin-top: 200px;
+}
+
+#qs_img{
+	width: 150vw;
+	height: 100vw;
+}
+
+.ad{
+	width: 1400px;
+}
+</style>
+<script type="text/javascript"
+	src="./jquery/jquery-1.12.4.js"></script>
+
+</head>
+<body class="container">
+
+	<!-- 문제 -->
+	<article class="question">
+		<div class="progress-container">
+  			<div class="progressbar" style="width:calc(100/16*1%)"></div>
+		</div>
+		<h2 id="title" style= "color: white;">문제</h2>
+			<input id="type" type="hidden" value="FB" />
+	</article>
+	<div class="qs_area">
+		<div class=qs_I>
+			<img  id="qs_img" alt="질문사진" src="https://cdn.pixabay.com/photo/2017/07/20/03/53/homework-2521144_960_720.jpg"/>
+		</div>
+		<div class=qs_txt>
+			<button id="A" type="button" class="qs_btn">시험 시간 못 풀 것 같아서 찍은 문제 다시 풀기</button>
+			<button id="B" type="button"  class="qs_btn">알고 있는 문제 틀렸는지 다시 확인하기</button>
+		</div>
+	</div>
+		<div class="ad">
+		<ins class="kakao_ad_area" style="display:none;" 
+			 data-ad-unit    = "DAN-WyuMlePoLsDv0Lgg" 
+			 data-ad-width   = "250" 
+			 data-ad-height  = "250">
+		</ins> 
+		<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+		
+		<ins class="kakao_ad_area" style="display:none;" 
+			 data-ad-unit    = "DAN-c8UHUUg7ro6ByW9u" 
+			 data-ad-width   = "250" 
+			 data-ad-height  = "250">
+		</ins> 
+		<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+		<ins class="kakao_ad_area" style="display:none;" 
+			 data-ad-unit    = "DAN-5VXgl7hZkf9LWFNP" 
+			 data-ad-width   = "320" 
+			 data-ad-height  = "100">
+		</ins> 
+		<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+		
+		</div>
+		<input type="hidden" id="FB" value="0"/>
+		<input type="hidden" id="CS" value="0"/>
+		<input type="hidden" id="IP" value="0"/>
+		<input type="hidden" id="KA" value="0"/>
+		
+	<script type="text/javascript">
+		var mbti = "";
+		var num = 2;
+			 var q = {
+		            1: {"title": "첫번째 질문", "type": "FB", "A": "시험 시간 못 풀 것 같아서 찍은 문제 다시 풀기", "B": "알고 있는 문제 틀렸는지 다시 확인하기"},
+		            2: {"title": "두번째 질문", "type": "FB", "A": "친구와 다투고 시간을 갖는다.", "B": "바로 화해하려고 노력한다."},
+		            3: {"title": "세번째 질문", "type": "KA", "A": "사소한 것에도 논란이 되는 주인공", "B": "어디서나 인정 받는 조연"},
+		            4: {"title": "네번째 질문 ", "type": "CS", "A": "친구와 만날 때 맛 집 찾아가기", "B": "동네 단골 집 가기"},
+		            5: {"title": "다섯번째 질문", "type": "CS", "A": "좋은 아이디어가 있다면 판다.", "B": "빚을 지더라도 한번 해본다."},
+		            6: {"title": "여섯번째 질문", "type": "CS", "A": "분위기 좋은 해변에서 휴식", "B": "관광지 찾아 다니기"},
+		            7: {"title": "일곱번째 질문", "type": "CS", "A": "소소하고 확실한 성취감", "B": "확률적으로 얻을 수 있는 크거나 작은 행복"},
+		            8: {"title": "여덟번째 질문 ", "type": "IP", "A": "잘 모르는 일을 시작할 때 계획없이 시작한다.", "B": "완벽한 계획을 위해 다소 시간을 투자하고 시작한다."},
+		            9: {"title": "아홉번째 질문", "type": "IP", "A": "여행을 갈 때 시간 단위로 세세한 계획을 짠다.", "B": "여행 가서도 검색하며 자유롭게 변경한다."},
+		            10: {"title": "열번째 질문 ", "type": "KA", "A": "많은 사람 앞에서 발표하는 일을 피하지 않는다.", "B": "가능한 한 눈에 띄지 않게 일을 하고 싶다."},
+		            11: {"title": "열한번째 질문", "type": "KA", "A": "어색한 상황에도 말을 먼저 걸지 않는 편이다.", "B": "어색한 상황을 깨기 위해 대화를 잘 이끄는 편이다."},
+		            12: {"title": "열두번째 질문", "type": "KA", "A": "리더십이 있다.", "B": "리더쉽이 없는 편이다."},
+		            13: {"title": "열세번째 질문", "type": "IP", "A": "새로운 아이디어가 자주 머릿속에 떠오른다.", "B": "아이디어가 잘 떠오르지 않는다."},
+		            14: {"title": "열네번째 질문", "type": "FB", "A": "화를 잘 내지 않는 편이다.", "B": "화를 잘 참지 못하는 편이다."},
+		            15: {"title": "열다섯번째 질문", "type": "FB", "A": "대화를 할 때 중요한 것은 사실과 논리이다.", "B": "대화를 할 때 중요한 것은 공감과 이해이다."},
+		            16: {"title": "열여섯번째 질문", "type": "KA", "A": "혼자 여행 가기", "B": "친구들과 시간 맞춰 여행 가기"},
+		            17: {"title": "열일곱번째 질문", "type": "IP", "A": "혼자 상상 하며 시간을 보내곤 한다.", "B": "다양한 어트렉션을 많이 이용하는 편이다."},
+		            18: {"title": "열여덜번째 질문", "type": "FB", "A": "지인이 고민을 얘기할 때는 현실적인 조언이 중요하다.", "B": "괜한 참견보다는 공감하며 듣기만 하는 편이 좋다."},
+		            19: {"title": "열아홉번째 질문", "type": "IP", "A": "여행을 가기 몇 달 전부터 계획을 세우는 편이다.", "B": "즉흥적인 여행을 좋아한다"},
+		            20: {"title": "스무번째 질문", "type": "CS", "A": "타인의 시선을 의식해서 못 해 본 일이 있다.", "B": "남들의 시선 따위는 무섭지 않다."}
+		        }
+			 var i = {
+					1: {"aImg":"https://cdn.pixabay.com/photo/2017/07/20/03/53/homework-2521144_960_720.jpg"},
+					2: {"aImg":"https://cdn.pixabay.com/photo/2016/11/29/08/51/city-1868530_960_720.jpg"},
+					3: {"aImg":"https://cdn.pixabay.com/photo/2015/04/08/01/49/superhero-712060_960_720.jpg"},
+					4: {"aImg":"https://cdn.pixabay.com/photo/2015/06/30/18/35/st-826687__340.jpg"},
+					5: {"aImg":"https://cdn.pixabay.com/photo/2017/07/13/12/51/puzzle-2500328__340.jpg"},
+					6: {"aImg":"https://cdn.pixabay.com/photo/2017/04/05/01/15/ocean-2203720_960_720.jpg"},
+					7: {"aImg":"https://cdn.pixabay.com/photo/2016/03/09/09/43/person-1245959__340.jpg"},
+					8: {"aImg":"https://cdn.pixabay.com/photo/2010/12/05/space-shuttle-992_960_720.jpg"},
+					9: {"aImg":"https://cdn.pixabay.com/photo/2020/02/20/19/48/travel-4865665_960_720.jpg"},
+					10: {"aImg":"https://cdn.pixabay.com/photo/2016/02/01/21/52/barack-obama-1174489_960_720.jpg"},
+					11: {"aImg":"https://cdn.pixabay.com/photo/2016/04/16/00/53/pry-1332305_960_720.jpg"},
+					12: {"aImg":"https://cdn.pixabay.com/photo/2014/04/03/11/50/leader-312276__340.png"},
+					13: {"aImg":"https://cdn.pixabay.com/photo/2016/12/01/13/10/lightbulb-1875247__340.jpg"},
+					14: {"aImg":"https://cdn.pixabay.com/photo/2019/03/24/15/52/anguish-4077946__340.jpg"},
+					15: {"aImg":"https://cdn.pixabay.com/photo/2016/08/20/09/46/magnifying-glass-1607160__340.jpg"},
+					16: {"aImg":"https://cdn.pixabay.com/photo/2016/05/24/18/49/suitcase-1412996_960_720.jpg"},
+					17: {"aImg":"https://cdn.pixabay.com/photo/2020/08/29/15/25/forest-5527296_960_720.jpg"},
+					18: {"aImg":"https://cdn.pixabay.com/photo/2018/07/25/08/59/business-3560932__340.jpg"},
+					19: {"aImg":"https://cdn.pixabay.com/photo/2016/03/14/18/22/calendar-1255953__340.jpg"},
+					20: {"aImg":"https://cdn.pixabay.com/photo/2015/07/09/23/09/cadaques-838724__340.jpg" }
+				 }
+	
+		
+		$("#A").click(function(){
+			var type= $("#type").val();
+			var preValue = $("#"+type).val();
+			$("#"+type).val((preValue*1)+1);
+			next();
+		});
+		
+		$("#B").click(function(){
+			next();
+		});
+		function next(){
+			
+			if(num == 20){
+				$(".question").hide();
+				$(".qs_area").hide();
+				
+				/* 삼항연산자 */
+				($("#FB").val() <= 3 ) ? mbti += "B" : mbti+= "F";
+				($("#CS").val() <= 3 ) ? mbti += "S" : mbti+= "C";
+				($("#IP").val() <= 3 ) ? mbti += "P" : mbti+= "I";
+				($("#KA").val() <= 3 ) ? mbti += "A" : mbti+= "K";
+				
+				//결과 값 홈페이지
+				result();
+			
+			} else{				
+				$(".progressbar").attr('style', 'width:calc(100/20*'+num+'%)');
+				$("#title").html(q[num]["title"]);
+				$("#type").val(q[num]["type"]);
+				$("#A").html(q[num]["A"]);
+				$("#B").html(q[num]["B"]);
+				$("#qs_img").attr("src", i[num]["aImg"])
+				
+			
+				num++;
+			}	
+			
+		}
+		
+	function result(){
+		
+		
+		switch(mbti){
+		
+		case "FCIK":
+					location.href ="./Result/FCIK.html";
+			break
+		case "FCIA":
+					location.href ="./Result/FCIA.html";
+			break
+		case "FCPK":
+					location.href ="./Result/FCPK.html";
+			break
+		case "FCPA":
+					location.href ="./Result/FCPA.html";
+			break
+		case "FSIK":
+					location.href ="./Result/FSIK.html";
+			break
+		case "FSIA":
+					location.href ="./Result/FSIA.html";
+			break
+		case "FSPK":
+					location.href ="./Result/FSPK.html";				
+			break
+		case "FSPA":
+					location.href ="./Result/FSPA.html";
+			break
+		case "BCIK":
+					location.href ="./Result/BCIK.html";
+			break
+		case "BCIA":
+					location.href ="./Result/BCIA.html";
+			break
+		case "BCPK":
+					location.href ="./Result/BCPK.html";
+			break
+		case "BCPA":
+					location.href ="./Result/BCPA.html";
+			break
+		case "BSIK":
+					location.href ="./Result/BSIK.html";
+			break
+		case "BSIA":
+					location.href ="./Result/BSIA.html";
+			break
+		case "BSPK":
+					location.href ="./Result/BSPK.html";
+			break
+		case "BSPA":
+					location.href ="./Result/BSPA.html";
+			break
+		default:
+			alert("맞는 결과가 없습니다");
+		}
+	}
+	</script>
+
+</body>
+</html>
