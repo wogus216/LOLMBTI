@@ -33,6 +33,9 @@ body{
 .btn_area {
 	margin: 10px auto;
 }
+.btn-1, .btn-2{
+	cursor: pointer;
+}
 
 button,
 button::after {
@@ -54,6 +57,7 @@ button {
   padding: 0.3em 3em;
   position: relative;
   text-transform: uppercase;
+  color: white;
 }
 
 button::before,
@@ -69,14 +73,14 @@ button:hover {
 }
 
 /* BUTTON 1 */
-.btn-1::after {
+.btn-1::after, .btn-2::after {
   height: 0;
   left: 0;
   top: 0;
   width: 100%;
 }
 
-.btn-1:hover:after {
+.btn-1:hover:after, .btn-2:hover:after {
   height: 100%;
 }
 a {
@@ -104,6 +108,16 @@ $(document).ready(function(){
 	$('#introImg').attr("src", imgArray[imgNum]);
   }
   randomImg();
+  
+  //PC버전
+  $(".btn-1").on("click",function(){
+	 location.href = "Mbti_Second.html";
+  });
+ 
+  //모바일버전
+  $(".btn-2").on("click",function(){
+	 location.href = "mMbti_Second.html";
+  });
 }); //ready end
  </script>
 </head>
@@ -114,10 +128,10 @@ $(document).ready(function(){
 	</div>
 	<div class="btn_area">
 		  <button class="btn-1">
-		 	 <a href="Mbti_Second.html">PC버전</a>
+		 	PC버전
 		  </button>
-		    <button class="btn-1">
-		 	 <a href="MMbti_Second.html">모바일버전</a>
+		    <button class="btn-2">
+		 	모바일버전
 		  </button>
 	</div>
 	<div class="ad">

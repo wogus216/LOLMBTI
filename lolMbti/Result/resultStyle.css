@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+.contents{
+	text-align: center;
+	min-width: 1500px;
+}
+
+.l_adv{
+	display: inline-block;
+	width: 200px;
+	height: 1000px;
+	float: left;
+}
+.mid{
+	display: inline-block;
+	vertical-align: top;
+	width: 1100px;
+	height: 1000px;
+	background-color: white;
+
+}
+.r_adv{
+	display: inline-block;
+	vertical-align: top;
+	width: 200px;
+	height: 1000px;
+	float: right;
+}
+
+/* 결과 */
+
+
+.result_img{
+	border-radius: 20px;
+	width: 900px;
+	height: 500px;
+	margin: 20px auto;
+}
+
+.addthis_inline_share_toolbox{
+	margin-top: 20px;
+}
